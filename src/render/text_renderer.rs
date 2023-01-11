@@ -1414,28 +1414,35 @@ impl TextDecorator for PlainDecorator {
     type Annotation = ();
 
     fn decorate_link_start(&mut self, url: &str) -> (String, Self::Annotation) {
-        self.links.push(url.to_string());
-        ("[".to_string(), ())
+        // ("".to_string(), ())
+        // self.links.push(url.to_string());
+        // ("[".to_string(), ())
+        ("".to_string(), ())
     }
 
     fn decorate_link_end(&mut self) -> String {
-        format!("][{}]", self.links.len())
+        // format!("][{}]", self.links.len())
+        "".to_string()
     }
 
     fn decorate_em_start(&mut self) -> (String, Self::Annotation) {
-        ("*".to_string(), ())
+        // ("*".to_string(), ())
+        ("".to_string(), ())
     }
 
     fn decorate_em_end(&mut self) -> String {
-        "*".to_string()
+        // "*".to_string()
+        "".to_string()
     }
 
     fn decorate_strong_start(&mut self) -> (String, Self::Annotation) {
-        ("**".to_string(), ())
+        // ("**".to_string(), ())
+        ("".to_string(), ())
     }
 
     fn decorate_strong_end(&mut self) -> String {
-        "**".to_string()
+        // "**".to_string()
+        "".to_string()
     }
 
     fn decorate_strikeout_start(&mut self) -> (String, Self::Annotation) {
@@ -1462,30 +1469,35 @@ impl TextDecorator for PlainDecorator {
     }
 
     fn decorate_image(&mut self, title: &str) -> (String, Self::Annotation) {
-        (format!("[{}]", title), ())
+        // (format!("[{}]", title), ())
+        ("".to_string(), ())
     }
 
     fn header_prefix(&mut self, level: usize) -> String {
-        "#".repeat(level) + " "
+        // "#".repeat(level) + " "
+        "".to_string()
     }
 
     fn quote_prefix(&mut self) -> String {
-        "> ".to_string()
+        // "> ".to_string()
+        "".to_string()
     }
 
     fn unordered_item_prefix(&mut self) -> String {
-        "* ".to_string()
+        // "* ".to_string()
+        "".to_string()
     }
 
     fn ordered_item_prefix(&mut self, i: i64) -> String {
-        format!("{}. ", i)
+        // format!("{}. ", i)
+        "".to_string()
     }
 
     fn finalise(self) -> Vec<TaggedLine<()>> {
         self.links
             .into_iter()
             .enumerate()
-            .map(|(idx, s)| TaggedLine::from_string(format!("[{}]: {}", idx + 1, s), &()))
+            .map(|(idx, s)| TaggedLine::from_string(s, &()))
             .collect()
     }
 
