@@ -930,7 +930,8 @@ fn process_dom_node<'a, 'b, T: Write>(
                 | expanded_name!(html "hr")
                 | expanded_name!(html "script")
                 | expanded_name!(html "style")
-                | expanded_name!(html "head") => {
+                | expanded_name!(html "head")
+                | expanded_name!(html "noscript") => {
                     /* Ignore the head and its children */
                     Nothing
                 }
